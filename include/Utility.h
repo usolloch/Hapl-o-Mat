@@ -40,11 +40,13 @@
 const double ZERO = 1e-14;
 const double MAX_MEMORY = 200000.;
 
+/*
 template<typename T, typename... Args>
   std::unique_ptr<T> make_unique(Args&&... args)
 {
   return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 }
+*/
 
 std::chrono::high_resolution_clock::time_point getTime();
 size_t getTimeDifference(const std::chrono::high_resolution_clock::time_point t1,
@@ -108,5 +110,11 @@ void buildCombinations(std::vector<std::vector<size_t>> & listOfCombinations,
 template<typename T>
 void cartesianProduct(std::vector<std::vector<T>> & out, const std::vector<std::vector<T>> & in);
 
+
+inline std::string trimString(std::string& str) {
+    str.erase(0, str.find_first_not_of(' '));
+    str.erase(str.find_last_not_of(' ')+1);
+    return str;
+}
 
 #endif
